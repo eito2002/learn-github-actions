@@ -1,0 +1,22 @@
+name: Build Check
+
+on:
+    pull_request:
+        branches:
+            - '*' # any branch
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: install-build-essential
+      run: |
+        sudo apt-get update
+        sudo apt-get install build-essential -y
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: build
+      run: |
+        make
